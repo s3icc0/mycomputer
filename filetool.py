@@ -1,7 +1,9 @@
 import os
 
+
 def clear_screen():
     os.system('cls' if os.name == 'nt' else 'clear')
+
 
 def set_window_size(cols, lines):
     os.system('mode con: cols={0} lines={1}'.format(cols, lines))
@@ -12,6 +14,7 @@ cmd_height = 35
 
 """current working file STR"""
 cwfile = None
+
 
 def filetool():
     """Navigate
@@ -42,12 +45,14 @@ def filetool():
         input('Press ENTER to continue ...')
         filetool()
 
+
 def exitscript():
     clear_screen()
     print('Thanks for using! Goodbye!')
     input('Press ENTER to EXIT ...')
     clear_screen()
     exit()
+
 
 def lstdecide():
     clear_screen()
@@ -67,6 +72,7 @@ def lstdecide():
         input('Press ENTER to continue ...')
         lstfiles()
 
+
 def lstfiles():
     clear_screen()
     print('Listing files in:\n   {}\n'.format(os.getcwd()))
@@ -76,6 +82,7 @@ def lstfiles():
     input('\nDONE\nPress ENTER to continue ...')
     filetool()
 
+
 def lstall():
     clear_screen()
     print('Listing files and directories in:\n   {}\n'.format(os.getcwd()))
@@ -83,6 +90,7 @@ def lstall():
         print(item)
     input('\nDONE\nPress ENTER to continue ...')
     filetool()
+
 
 def lstdir():
     clear_screen()
@@ -92,6 +100,7 @@ def lstdir():
             print(item)
     input('\nDONE\nPress ENTER to continue ...')
     filetool()
+
 
 def chngdir():
     clear_screen()
@@ -111,6 +120,7 @@ def chngdir():
     print('Your new working directory is:\n   {}\n'.format(os.getcwd()))
     chngdirdecide()
 
+
 def chngdirdecide():
     decide = input(str(
         '\nRun again? (1)\nNew action. (2)\n'))
@@ -123,11 +133,6 @@ def chngdirdecide():
         print('Your ENTRY is NOT VALID, please try again ...')
         input('Press ENTER to continue ...')
         chngdirdecide()
-
-
-
-
-
 
 # def gofile():
 #     file = input(str('Enter file name: '))
