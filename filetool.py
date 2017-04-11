@@ -12,8 +12,8 @@ def set_window_size(cols, lines):
 cmd_width = 120
 cmd_height = 35
 
-"""current working file STR"""
-cwfile = None
+"""temp dictionary holding names"""
+witem = {'itementry': None}
 
 
 def filetool():
@@ -29,15 +29,13 @@ def filetool():
         'Press:\n'
         '   1   List files\n'
         '   2   Change directory\n'
-        '   3   Create new ...\n'
-        '   4   Enter known filename\n'
-        '   5   Exit\n'))
+        '   3   Work with existing, create new ...\n'
+        '   4   Exit\n'))
     options = {
         '1': lstdecide,
         '2': chngdir,
-        '3': clear_screen,
-        '4': clear_screen,
-        '5': exitscript}
+        '3': workitem,
+        '4': exitscript}
     if decide in options.keys():
         options[decide]()
     else:
@@ -133,6 +131,34 @@ def chngdirdecide():
         print('Your ENTRY is NOT VALID, please try again ...')
         input('Press ENTER to continue ...')
         chngdirdecide()
+
+
+def workitem():
+    clear_screen()
+    print('Your current working directory is:\n   {}\n'.format(os.getcwd()))
+    witem['itementry'] = inputstr(('Please enter the name of the item '
+                                   'you want to work with'))
+    decide = input(str(
+        'Select action:\n'
+        '   1   Create new file\n'
+        '   2   Create new directory\n'
+        '   3   Read file\n'
+        '   4   Write to file\n'
+        '   5   Overwrite file'))
+    options = {
+        '1': createf,
+        '2': created,
+        '3': readf,
+        '4': writef,
+        '5': overf}
+    if decide in options.keys():
+        options[decide]()
+    else:
+        print('Your ENTRY is NOT VALID, please try again ...')
+        input('Press ENTER to continue ...')
+        filetool()
+
+
 
 # def gofile():
 #     file = input(str('Enter file name: '))
